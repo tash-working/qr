@@ -79,5 +79,10 @@ img{
 }
 .mainDiv{
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+}
+.msg{
+  color: white;
+  font-size: 10px;
 }
