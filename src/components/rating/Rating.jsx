@@ -174,10 +174,11 @@ const Rating = () => {
                         </div>
                         <div>
                             <input type="radio" id="overall-experience-dissatisfied" name="overallExperience" value="Dissatisfied" onChange={handleChange} />
-                            <p htmlFor="overall-experience-dissatisfied">Dissatisfied</p>
+                            <label htmlFor="overall-experience-dissatisfied">Dissatisfied</label>
                         </div>
                     </div>
                 </div>
+                
                 <button type="submit">Submit</button>
             </form>
         </div>
