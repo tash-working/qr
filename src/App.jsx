@@ -9,7 +9,6 @@ function App() {
 
 
   return (
-          <a href="https://www.facebook.com/velvetbitess" target="_blank">
 
     <BrowserRouter>
     <Routes>
