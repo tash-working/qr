@@ -32,7 +32,7 @@ const Rating = () => {
             return; // Prevent form submission
         } else {
             try {
-                await fetch(`http://localhost:5000/rating`, {
+                await fetch(`https://server-08ld.onrender.com/rating`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(feedbackData),
@@ -280,7 +280,14 @@ const Rating = () => {
                     />
                 </div>
 
-                <button type="submit">Submit</button>
+                <button   style={{
+                            padding: "10px",
+                            style:"none",
+                            border:"none",
+                            fontSize: "20px",
+                            cursor: "pointer"
+
+                        }}type="submit">Submit</button>
             </form>
         </div>
 
