@@ -3,6 +3,7 @@ import "./rating.css"
 
 
 const Rating = () => {
+   
     const [feedbackData, setFeedbackData] = useState({
         foodQuality: '',
         overallServiceQuality: '',
@@ -10,16 +11,94 @@ const Rating = () => {
         orderAccuracy: '',
         speedOfService: '',
         value: '',
-        overallExperience: ''
+        overallExperience: '',
+        text: ''
     });
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(feedbackData); // Log the feedback data to the console
-        // You can also send this data to a server for further processing
+        // Check if any field is empty
+        if (
+            !feedbackData.foodQuality ||
+            !feedbackData.overallServiceQuality ||
+            !feedbackData.cleanliness ||
+            !feedbackData.orderAccuracy ||
+            !feedbackData.speedOfService ||
+            !feedbackData.value ||
+            !feedbackData.overallExperience ||
+            !feedbackData.text
+        ) {
+            alert("Please fill out all required fields.");
+            return; // Prevent form submission
+        } else {
+            try {
+                await fetch(`http://localhost:5000/rating`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(feedbackData),
+                });
+                setFeedbackData({
+                    foodQuality: '',
+                    overallServiceQuality: '',
+                    cleanliness: '',
+                    orderAccuracy: '',
+                    speedOfService: '',
+                    value: '',
+                    overallExperience: '',
+                    text: ''
+                })
+                document.getElementById('food-quality-excellent').checked = false;
+                document.getElementById('food-quality-good').checked = false;
+                document.getElementById('food-quality-average').checked = false;
+                document.getElementById('food-quality-dissatisfied').checked = false;
+                
+                document.getElementById('overall-service-quality-excellent').checked = false;
+                document.getElementById('overall-service-quality-good').checked = false;
+                document.getElementById('overall-service-quality-average').checked = false;
+                document.getElementById('overall-service-quality-dissatisfied').checked = false;
+
+                document.getElementById('cleanliness-excellent').checked = false;
+                document.getElementById('cleanliness-good').checked = false;
+                document.getElementById('cleanliness-average').checked = false;
+                document.getElementById('cleanliness-dissatisfied').checked = false;
+
+                document.getElementById('order-accuracy-excellent').checked = false;
+                document.getElementById('order-accuracy-good').checked = false;
+                document.getElementById('order-accuracy-average').checked = false;
+                document.getElementById('order-accuracy-dissatisfied').checked = false;
+
+                document.getElementById('speed-of-service-excellent').checked = false;
+                document.getElementById('speed-of-service-good').checked = false;
+                document.getElementById('speed-of-service-average').checked = false;
+                document.getElementById('speed-of-service-dissatisfied').checked = false;
+
+                document.getElementById('value-excellent').checked = false;
+                document.getElementById('value-good').checked = false;
+                document.getElementById('value-average').checked = false;
+                document.getElementById('value-dissatisfied').checked = false;
+
+                document.getElementById('overall-experience-excellent').checked = false;
+                document.getElementById('overall-experience-good').checked = false;
+                document.getElementById('overall-experience-average').checked = false;
+                document.getElementById('overall-experience-dissatisfied').checked = false;
+
+
+                document.getElementById('text').innerText= "";
+
+                console.log("Image uploaded and user data updated successfully!"); // Success message
+            } catch (serverError) {
+                console.error("Error updating user data:", serverError);
+                alert(
+                    "An error occurred while updating your images. Please try again."
+                ); // More specific message
+            }
+        }
+
+
     };
 
     const handleChange = (event) => {
+
         const { name, value } = event.target;
         setFeedbackData((prevData) => ({
             ...prevData,
@@ -177,8 +256,30 @@ const Rating = () => {
                             <label htmlFor="overall-experience-dissatisfied">Dissatisfied</label>
                         </div>
                     </div>
+
                 </div>
-                
+                <div className="form-group">
+                    <textarea
+                        id='text'
+                        type="text"
+                        placeholder="Enter text here"
+                        name="text"
+
+                        onChange={handleChange}
+                        style={{
+                            width: '100%',
+                            height: '150px',
+                            padding: '12px 20px',
+                            boxSizing: 'border-box',
+                            border: '2px solid #ccc',
+                            borderRadius: '4px',
+                            backgroundColor: '#f8f8f8',
+
+                            resize: 'none'
+                        }}
+                    />
+                </div>
+
                 <button type="submit">Submit</button>
             </form>
         </div>
