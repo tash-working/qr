@@ -1,0 +1,32 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    padding: 50px;
+
+    
+    margin-bottom: 2rem;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 10px;
+  
+  }
+  
+  .form-group input[type="radio"] {
+    width: 25px;
+    height: 25px;
+   
+  }
+  .inputDiv{
+
+    display: flex;
+  flex-wrap: wrap;
+  }
+  .titleLabel{
+
+   font-size: 30px;
+   margin-bottom:1rem;
+  }
