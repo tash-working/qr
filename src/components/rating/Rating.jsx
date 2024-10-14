@@ -32,7 +32,7 @@ const Rating = () => {
             <h3>Customer Feedback Form</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="food-quality">Food Quality</label>
+                    <p className="titleLabel" htmlFor="food-quality">Food Quality</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="food-quality-excellent" name="foodQuality" value="Excellent" onChange={handleChange} />
@@ -53,7 +53,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="overall-service-quality">Overall Service Quality</label>
+                    <p className="titleLabel" htmlFor="overall-service-quality">Overall Service Quality</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="overall-service-quality-excellent" name="overallServiceQuality" value="Excellent" onChange={handleChange} />
@@ -74,7 +74,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="cleanliness">Cleanliness</label>
+                    <p className="titleLabel" htmlFor="cleanliness">Cleanliness</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="cleanliness-excellent" name="cleanliness" value="Excellent" onChange={handleChange} />
@@ -95,7 +95,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="order-accuracy">Order Accuracy</label>
+                    <p className="titleLabel" htmlFor="order-accuracy">Order Accuracy</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="order-accuracy-excellent" name="orderAccuracy" value="Excellent" onChange={handleChange} />
@@ -116,7 +116,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="speed-of-service">Speed of Service</label>
+                    <p className="titleLabel" htmlFor="speed-of-service">Speed of Service</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="speed-of-service-excellent" name="speedOfService" value="Excellent" onChange={handleChange} />
@@ -137,7 +137,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="value">Value</label>
+                    <p className="titleLabel" htmlFor="value">Value</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="value-excellent" name="value" value="Excellent" onChange={handleChange} />
@@ -158,7 +158,7 @@ const Rating = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="titleLabel" htmlFor="overall-experience">Overall Experience</label>
+                    <p className="titleLabel" htmlFor="overall-experience">Overall Experience</p>
                     <div className="inputDiv">
                         <div>
                             <input type="radio" id="overall-experience-excellent" name="overallExperience" value="Excellent" onChange={handleChange} />
@@ -174,7 +174,7 @@ const Rating = () => {
                         </div>
                         <div>
                             <input type="radio" id="overall-experience-dissatisfied" name="overallExperience" value="Dissatisfied" onChange={handleChange} />
-                            <label htmlFor="overall-experience-dissatisfied">Dissatisfied</label>
+                            <p htmlFor="overall-experience-dissatisfied">Dissatisfied</p>
                         </div>
                     </div>
                 </div>
