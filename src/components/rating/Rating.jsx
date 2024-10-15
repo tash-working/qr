@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./rating.css"
+import { Link } from 'react-router-dom';
 
 
 const Rating = () => {
@@ -30,9 +31,10 @@ const Rating = () => {
         ) {
             alert("Please fill out all required fields.");
             return; // Prevent form submission
-        } else {
+        } 
             try {
-                await fetch(`https://server-08ld.onrender.com/rating`, {
+                await fetch(`https://server-08ld.onrender.com/get_rating`, {
+                // await fetch(`http://localhost:5000/set_rating`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(feedbackData),
@@ -83,7 +85,7 @@ const Rating = () => {
                 document.getElementById('overall-experience-dissatisfied').checked = false;
 
 
-                document.getElementById('text').innerText= "";
+                document.getElementById('text').value= "";
 
                 console.log("Image uploaded and user data updated successfully!"); // Success message
             } catch (serverError) {
@@ -92,7 +94,7 @@ const Rating = () => {
                     "An error occurred while updating your images. Please try again."
                 ); // More specific message
             }
-        }
+        
 
 
     };
@@ -108,6 +110,30 @@ const Rating = () => {
 
     return (
         <div className="customer-feedback-form">
+           <div>
+           <Link to="/">
+            <button   style={{
+                margin:"5px",
+                            padding: "10px",
+                            style:"none",
+                            border:"none",
+                            fontSize: "20px",
+                            cursor: "pointer"
+
+                        }}>Back</button>
+            </Link>
+            <Link to="/feedbacks">
+            <button   style={{
+                margin:"5px",
+                            padding: "10px",
+                            style:"none",
+                            border:"none",
+                            fontSize: "20px",
+                            cursor: "pointer"
+
+                        }}>Feedbacks</button>
+            </Link>
+           </div>
             <h3>Customer Feedback Form</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
