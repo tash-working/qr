@@ -7,7 +7,7 @@ const Feedback = ({rating, getDelete}) => {
     console.log(getDelete);
      const deleteRating =()=>{
     //    fetch(`http://localhost:5000/deleteRating/${rating._id}`,{
-       fetch(`http://server-08ld.onrender.com/deleteRating/${rating._id}`,{
+       fetch(`https://server-08ld.onrender.com/deleteRating/${rating._id}`,{
         method :"DELETE"
        })
        .then(res => res.json())
