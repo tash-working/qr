@@ -6,7 +6,7 @@ const Feedback = ({rating, getDelete}) => {
    
     console.log(getDelete);
      const deleteRating =()=>{
-    //    fetch(`http://localhost:5000/deleteRating/${rating._id}`,{
+    //    fetch(`https://server-08ld.onrender.com/deleteRating/${rating._id}`,{
        fetch(`https://server-08ld.onrender.com/deleteRating/${rating._id}`,{
         method :"DELETE"
        })
@@ -23,6 +23,20 @@ const Feedback = ({rating, getDelete}) => {
         <div className="cart">
       <h3>ORDER ID: {rating._id}</h3>
       <div className="cart-item">
+        {
+         <>
+        {  rating.orders.map(order=>(
+            <p>{order.quantity} {order.name}</p>
+          ))}
+          {rating.foodQuality === "" ? (
+          <h3>Total:  {rating.orders.reduce((total, item) => total + item.price * item.quantity, 0)}tk</h3>
+        ) : (
+          
+          <h3>Total: {rating.bill}tk (after 10% dis.)</h3>
+        )}
+          
+         </>
+        }
         <p>Cleanliness: {rating.cleanliness}</p>
         <p>Food Quality: {rating.foodQuality}</p>
         <p>Order Accuracy: {rating.orderAccuracy}</p>

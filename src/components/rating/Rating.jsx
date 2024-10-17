@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./rating.css"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 const Rating = () => {
+    const { id } = useParams()
+    console.log(id);
+    const [feedbackData, setFeedbackData] = useState({});
+    useEffect(() => {
+
+        const fetchData = async () => {
+       
+          try {
+            const response = await fetch(
+            //   `https://server-08ld.onrender.com/get_rating`
+              `https://server-08ld.onrender.com/rating/${id}`
+            );
+            if (!response.ok) {
+              throw new Error(
+                `Network response was not ok (status ${response.status})`
+              );
+            }
+            const data = await response.json();
+    
+            setFeedbackData(data)
+           
+            
+          } catch (error) {
+            console.error("Error fetching users:", error);
+          }
+        };
+    
+        fetchData();
+      }, []);
    
-    const [feedbackData, setFeedbackData] = useState({
-        foodQuality: '',
-        overallServiceQuality: '',
-        cleanliness: '',
-        orderAccuracy: '',
-        speedOfService: '',
-        value: '',
-        overallExperience: '',
-        text: ''
-    });
+  
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -33,21 +53,14 @@ const Rating = () => {
             return; // Prevent form submission
         } 
             try {
-                await fetch(`https://server-08ld.onrender.com/get_rating`, {
-                // await fetch(`http://localhost:5000/set_rating`, {
+                // await fetch(`https://server-08ld.onrender.com/set_rating/${id}`, {
+                await fetch(`https://server-08ld.onrender.com/set_rating/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(feedbackData),
                 });
                 setFeedbackData({
-                    foodQuality: '',
-                    overallServiceQuality: '',
-                    cleanliness: '',
-                    orderAccuracy: '',
-                    speedOfService: '',
-                    value: '',
-                    overallExperience: '',
-                    text: ''
+                     
                 })
                 document.getElementById('food-quality-excellent').checked = false;
                 document.getElementById('food-quality-good').checked = false;
@@ -134,7 +147,8 @@ const Rating = () => {
                         }}>Feedbacks</button>
             </Link>
            </div>
-            <h3>Customer Feedback Form</h3>
+            <h3>Customer Feedback Form({id})</h3>
+            <h2>order bill {feedbackData.bill} TK</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <p className="titleLabel" htmlFor="food-quality">Food Quality</p>
